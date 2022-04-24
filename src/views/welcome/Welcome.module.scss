@@ -1,4 +1,4 @@
-.welcome {
+.wrapper {
     height: calc(100vh - var(--welcome-nav-height));
     display: flex;
     flex-direction: column;
@@ -16,10 +16,12 @@
     }
 
     >main {
-        // background-color: lightcyan;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     >footer {
-        // background-color: lightgreen;
+        flex-shrink: 0;
     }
 }

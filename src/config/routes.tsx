@@ -3,16 +3,20 @@ import { First } from "../components/welcome/First";
 import { Forth } from "../components/welcome/Forth";
 import { Second } from "../components/welcome/Second";
 import { Third } from "../components/welcome/Third";
+import { Start } from "../views/srart/start";
 import { Welcome } from "../views/welcome/Welcome";
 
-export const routes:RouteRecordRaw[]= [
+export const routes: RouteRecordRaw[] = [
+    { path:'/', redirect:'/welcome' },
     {
-        path: '/', component: Welcome,
+        path: '/welcome', component: Welcome,
         children: [
-            {path: 'First', component:First},
-            { path: 'Second', component: Second },
-            { path: 'Third', component: Third },
-            {path:'Forth',component:Forth}
+            { path: '', redirect:'/welcome/1'},
+            { path: '1', component: First},
+            { path: '2', component: Second },
+            { path: '3', component: Third },
+            { path: '4', component: Forth}
         ]
-    }
+    },
+    {path:'/start',component:Start}
 ]
