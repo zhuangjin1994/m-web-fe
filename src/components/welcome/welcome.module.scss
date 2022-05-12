@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     padding-bottom: var(--welcome-nav-gap);
+}
 
     .card {
         flex-grow: 1;
@@ -11,7 +12,6 @@
         background: var(--welcome-card-bg);
         border-radius: 8px;
         padding: 16px;
-        margin: 16px 16px 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -42,4 +42,3 @@
             visibility: hidden;
         }
     }
-}
