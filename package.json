@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "sass": "1.50.1",
+    "svgo": "2.8.0",
+    "svgstore": "3.0.1",
     "vue": "3.2.33",
     "vue-router": "4.0.14"
   },
