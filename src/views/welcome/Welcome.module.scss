@@ -23,6 +23,7 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    border-radius: 8px;
     margin: 16px 16px var(--welcome-nav-gap);
   }
   > footer {
