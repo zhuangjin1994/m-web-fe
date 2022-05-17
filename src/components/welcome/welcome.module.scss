@@ -17,6 +17,11 @@
         align-items: center;
         text-align: center;
 
+        >svg{
+            width: 128px;
+            height: auto;
+        }
+
         >h2 {
             margin-top: 40px;
         }

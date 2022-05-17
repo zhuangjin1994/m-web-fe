@@ -12,7 +12,6 @@ export const StartPage = defineComponent({
         }
         return () => (
             <div>
-                {/* <nav class={s.menu}>menu</nav> */}
                 <NavBar>
                     {{
                         default: () => '山竹记账',

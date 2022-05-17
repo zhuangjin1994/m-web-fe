@@ -3,6 +3,7 @@ import { RouteLocationNormalizedLoaded, RouterView, useRoute, useRouter } from "
 import s from './Welcome.module.scss'
 import { useSwipe } from "../../hooks/useSwipe";
 import { throttle } from "../../shared/throttle";
+import { Icon } from "../../shared/Icon/Icon";
 
 const pushMap:Record<string , string> = {
     "Welcome1":"/welcome/2",
@@ -10,6 +11,7 @@ const pushMap:Record<string , string> = {
     "Welcome3":"/welcome/4",
     "Welcome4":"/start",
 }
+
 export const Welcome = defineComponent({
     setup(props,context) {
         const main = ref<HTMLElement>()
@@ -27,9 +29,7 @@ export const Welcome = defineComponent({
         })
         return () => <div class={s.wrapper}>
             <header>
-                <svg>
-                    <use xlinkHref="#mangosteen"></use>
-                </svg>
+                <Icon name="mangosteen" />
                 <h1>山竹</h1>
             </header>
             <main class={s.main} ref={main}>
