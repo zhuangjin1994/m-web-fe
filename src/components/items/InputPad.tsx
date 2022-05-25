@@ -12,7 +12,32 @@ export const InputPad = defineComponent({
     setup(props, context) {
         const now = new Date()
         const refDate = ref<Date>(now)
-        const appendText = (n: number | string) => refAmount.value += n.toString()
+        const appendText = (n: number | string) => {
+            const nString = n.toString()
+            const doIndex = refAmount.value.indexOf('.');
+            if (refAmount.value.length >= 13) {
+                return
+            }
+            if (doIndex >= 0 && refAmount.value.length - doIndex > 2) {
+                return
+            }
+            if (nString === '.') {
+                if (doIndex >= 0) {
+                    return
+                }
+            } else if (nString === '0') {
+                if (doIndex === -1) {
+                    if (refAmount.value === '0') {
+                        return
+                    }
+                }
+            } else {
+                if (refAmount.value === '0') {
+                    refAmount.value = ''
+                }
+            }
+            refAmount.value += n.toString()
+        }
         const buttons = [
             {text: '1', onClick: () => { appendText(1) }},
             { text: '2', onClick: () => { appendText(2) } },
@@ -25,14 +50,14 @@ export const InputPad = defineComponent({
             { text: '9', onClick: () => { appendText(9) } },
             { text: '.', onClick: () => { appendText('.') } },
             { text: '0', onClick: () => { appendText(0) } },
-            { text: '清空', onClick: () => { } },
+            { text: '清空', onClick: () => { refAmount.value = '0'} },
             { text: '提交', onClick: () => { } },
         ]
         const refDatePickerVisble = ref(false)
         const showDatePicker = () => refDatePickerVisble.value = true;
         const hideDatePicker = () => refDatePickerVisble.value = false;
         const setDate = (date: Date) => { refDate.value = date; hideDatePicker() }
-        const refAmount = ref('')
+        const refAmount = ref('0')
         return () => <>
             <div class={s.dateAndAmount}>
                 <span class={s.date}>
