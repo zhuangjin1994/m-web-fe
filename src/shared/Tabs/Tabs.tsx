@@ -46,4 +46,4 @@ export const Tab = defineComponent({
         <div>{context.slots.default?.()}</div>
       )
     }
-  })
+})
