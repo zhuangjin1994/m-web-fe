@@ -1,13 +1,10 @@
-import { defineComponent, PropType, ref} from "vue";
+import { defineComponent, ref} from "vue";
 import { MainLayout } from "../../layout/MainLayout";
 import { Icon } from "../../shared/Icon/Icon";
 import { Tab, Tabs } from "../../shared/Tabs/Tabs";
 import { InputPad } from "./InputPad";
 import s from "./ItemCreate.module.scss";
 export const ItemCreate = defineComponent({
-    props: {
-    name:String as PropType<string>
-    },
     setup(props, context) {
         const refKind = ref('支出')
         const refExpensesTags = ref([
@@ -74,14 +71,14 @@ export const ItemCreate = defineComponent({
                                         </div>
                                     </div>
                                     {refExpensesTags.value.map(tag =>
-                                    <div class={[s.tag, s.selected]}>
-                                        <div class={s.sign}>
-                                            {tag.sign}
+                                        <div class={[s.tag, s.selected]}>
+                                            <div class={s.sign}>
+                                                {tag.sign}
+                                            </div>
+                                            <div class={s.name}>
+                                                {tag.name}
+                                            </div>
                                         </div>
-                                        <div class={s.name}>
-                                            {tag.name}
-                                        </div>
-                                    </div>
                                     )}
                                 </Tab>
                                 <Tab name="收入" class={s.tags_wrapper}>
