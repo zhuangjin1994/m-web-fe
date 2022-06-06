@@ -1,9 +1,7 @@
 import { defineComponent, PropType, reactive} from "vue";
 import { MainLayout } from "../../layout/MainLayout";
 import { Button } from "../../shared/Button/Button";
-import { EmojiSelect } from "../../shared/EmojiSelect/EmojiSelect";
 import { Icon } from "../../shared/Icon/Icon";
-import { Rules, validate } from "../../shared/validate";
 import s from "./Tag.module.scss";
 import { TagForm } from "./TagForm";
 export const TagEdit = defineComponent({
