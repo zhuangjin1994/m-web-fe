@@ -36,8 +36,15 @@
   --input-border-color: #5c33be;
   --input-radius: var(--button-radius);
   --input-shadow: rgba(0,0,0,0.25);
+  --list-tag-text: #333;
+  --list-amount-text: var(--amount-text);
+  --list-time-text: var(--date-text);
+  --main: #5c33be;
   --error-color: #E10505;
   --emoji-nav-text: #999;
   --emoji-nav-text-selected: #333;
-  --main: #5c33be;
+  --total-bg: #252A43;
+  --total-text: white;
+  --total-income: #FE7275;
+  --total-expenses: #53A867;
 }
