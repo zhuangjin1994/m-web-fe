@@ -20,3 +20,14 @@
       }
     }
   }
+  .actions{
+    text-align: right;
+    button{
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+      & + & {
+        margin-left: 16px;
+      }
+    }
+  }
