@@ -10,6 +10,7 @@ export const Tabs = defineComponent({
             type: String,
         }
     },
+    emits:['update:selected'],
     setup(props, context) {
         return () => {
             const tabs = context.slots.default?.()

@@ -9,7 +9,7 @@ import s from "./ItemList.module.scss";
 import { ItemSummary } from "./ItemSummary";
 export const ItemList = defineComponent({
     props: {
-    name:String as PropType<string>
+        name:String as PropType<string>
     },
     setup(props, context) {
         const refSelected = ref('本月')
@@ -32,25 +32,23 @@ export const ItemList = defineComponent({
                 end: time.lastDayOfYear()
             }
         ]
-        const refOverlayVisble = ref(false)
-        watchEffect(() => {
-            if (refSelected.value === '自定义时间') {
-                refOverlayVisble.value = true
-            }
-        })
+        const refOverlayVisible = ref(false)
         const onSubmitCustomTime = (e: Event) => {
-            console.log('submit')
             e.preventDefault()
-            refOverlayVisble.value = false
+            refOverlayVisible.value = false
         }
+        const onSelect = (value: string) => {
+            if (value === '自定义时间') {
+              refOverlayVisible.value = true
+            }
+          }
         return () => <>
-
             <MainLayout>{
                 {
                     title: () => '记账',
                     icon: () => <Icon name="menu" />,
                     default: () => <>
-                        <Tabs classPrefix={'customTabs'} v-model:selected={refSelected.value}>
+                        <Tabs classPrefix={'customTabs'} v-model:selected={refSelected.value} onUpdate:selected={onSelect} >
                             <Tab name="本月">
                                 <ItemSummary startDate={timeList[0].start.format()} endDate={timeList[0].end.format()} />
                             </Tab>
@@ -64,7 +62,7 @@ export const ItemList = defineComponent({
                                 <ItemSummary startDate={customTime.start} endDate={customTime.end} />
                             </Tab>
                         </Tabs>
-                        <Overlay show={refOverlayVisble.value} class={s.overlay}>
+                        <Overlay show={refOverlayVisible.value} class={s.overlay}>
                             <div class={s.overlay_inner}>
                                 <header>
                                     请选择时间
