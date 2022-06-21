@@ -6,6 +6,9 @@ export const EmojiSelect = defineComponent({
         modelValue:{
             type: String,
             required: false
+        },
+        onUpdateModelValue: {
+            type: Function as PropType<(emoji:string)=>void>,
         }
     },
     setup(props, context) {
