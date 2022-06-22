@@ -5,7 +5,7 @@ import { Button } from '../../shared/Button/Button';
 import { Center } from '../../shared/Center/Center';
 import { FloatButton } from '../../shared/FloatButton/FloatButton';
 import { Icon } from '../../shared/Icon/Icon';
-import { Overlay } from '../../shared/Overlay/Overlay';
+import { Overlay, OverlayIcon } from '../../shared/Overlay/Overlay';
 import s from './StartPage.module.scss';
 export const StartPage = defineComponent({
   setup: (props, context) => {
@@ -17,7 +17,7 @@ export const StartPage = defineComponent({
       <MainLayout>{
         {
           title: () => '山竹记账',
-          icon: () => <Icon name="menu" class={s.navIcon} onClick={onClickMenu} />,
+          icon: () => <OverlayIcon />,
           default: () => <>
             <Center class={s.pig_wrapper}>
               <Icon name="pig" class={s.pig} />
@@ -30,9 +30,6 @@ export const StartPage = defineComponent({
             <RouterLink to="/items/create">
               <FloatButton iconName='add' />
             </RouterLink>
-            {refOverlayVisible.value &&
-              <Overlay onClose={() => refOverlayVisible.value = false} />
-            }
           </>
         }
       }</MainLayout>

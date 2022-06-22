@@ -3,6 +3,7 @@ import { defineComponent, PropType, reactive, ref, watchEffect} from "vue";
 import { MainLayout } from "../../layout/MainLayout";
 import { Form, FormItem } from "../../shared/Form/Form";
 import { Icon } from "../../shared/Icon/Icon";
+import { OverlayIcon } from "../../shared/Overlay/Overlay";
 import { Tab, Tabs } from "../../shared/Tabs/Tabs";
 import { Time } from "../../shared/time";
 import s from "./ItemList.module.scss";
@@ -46,7 +47,7 @@ export const ItemList = defineComponent({
             <MainLayout>{
                 {
                     title: () => '记账',
-                    icon: () => <Icon name="menu" />,
+                    icon: () => <OverlayIcon />,
                     default: () => <>
                         <Tabs classPrefix={'customTabs'} v-model:selected={refSelected.value} onUpdate:selected={onSelect} >
                             <Tab name="本月">
@@ -73,7 +74,7 @@ export const ItemList = defineComponent({
                                         <FormItem label="结束时间" v-model={customTime.end} type="date" />
                                         <FormItem>
                                             <div class={s.actions}>
-                                                <button type="button">取消</button>
+                                                <button type="button" onClick={()=> refOverlayVisible.value = false}>取消</button>
                                                 <button type="submit">确认</button>
                                             </div>
                                         </FormItem>
