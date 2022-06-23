@@ -1,0 +1,19 @@
+.warrper{
+
+}
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 42px 0 0;
+    .icon{
+        width: 64px;
+        height: 68px;
+    }
+    .appName{
+        color: var(--app-name-text);
+        font-weight: bold;
+        font-size: 32px;
+    }
+}
