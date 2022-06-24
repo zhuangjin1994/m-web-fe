@@ -33,8 +33,12 @@
   &.validationCodeButton {
     margin-left: 16px;
   }
-
   &_name {
+  }
+  &.select{
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-radius);
+    padding: 0 8px;
   }
   &_value {
     display: flex;
