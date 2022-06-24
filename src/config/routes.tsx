@@ -14,6 +14,7 @@ import { ThirdActions } from "../components/welcome/ThirdActions";
 import { ItemPage } from "../views/ItemPage/ItemPage";
 import { SignInPage } from "../views/SignInPage/SignInPage";
 import { StartPage } from "../views/SrartPage/StartPage";
+import { StatisticsPage } from "../views/StatisticsPage/StatisticsPage";
 import { TagPage } from "../views/TagPage/TagPage";
 import { Welcome } from "../views/welcome/Welcome";
 
@@ -46,5 +47,8 @@ export const routes: RouteRecordRaw[] = [
     },
     {
         path: '/sign_in', component: SignInPage,
+    },
+    {
+        path:'/statistics',component:StatisticsPage
     }
 ]
