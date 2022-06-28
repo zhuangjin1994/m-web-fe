@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, PropType, ref } from 'vue';
+import { computed, defineComponent, onMounted, PropType, reactive, ref } from 'vue';
 import { FormItem } from '../../shared/Form/Form';
 import s from './Charts.module.scss';
 import * as echarts from 'echarts';
@@ -18,10 +18,19 @@ export const Charts = defineComponent({
         const categpry = ref('expenses')
         const refDiv = ref<HTMLElement>();
         const refDiv2 = ref<HTMLElement>();
+        const data3 = reactive([
+            { tag: { id: 0, name: '吃', sign: 'x' }, amount: 1000 },
+            { tag: { id: 1, name: '喝', sign: 'x' }, amount: 100 },
+            { tag: { id: 2, name: '玩', sign: 'x' }, amount: 200 },
+        ])
+        const betterData3 = computed(() => {
+            const tolal = data3.reduce((sum, item) => sum + item.amount, 0);
+            return data3.map(item => ({ ...item, percent: Math.round(item.amount / tolal * 100) + '%' }))
+        })
         onMounted(() => {
             if (refDiv.value === undefined) { return }
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(refDiv.value);
+            const myChart = echarts.init(refDiv.value);
             // 绘制图表
             myChart.setOption({
                 grid: [
@@ -45,7 +54,7 @@ export const Charts = defineComponent({
         onMounted(() => {
             if (refDiv2.value === undefined) { return }
             // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(refDiv2.value);
+            const myChart = echarts.init(refDiv2.value);
             // 绘制图表
             const option = {
                 grid: [
@@ -80,6 +89,26 @@ export const Charts = defineComponent({
                 <FormItem type='select' options={[{ value: 'expenses', text: '支出' }, { value: 'income', text: '收入' }]} v-model={categpry.value} />
                 <div ref={refDiv} class={s.demo} ></div>
                 <div ref={refDiv2} class={s.demo2} ></div>
+                <div class={s.demo3}>
+                    {betterData3.value.map(({ tag, amount, percent }) => {
+                        return (
+                            <div class={s.topItem}>
+                                <div class={s.sign}>
+                                    {tag.sign}
+                                </div>
+                                <div class={s.bar_wrapper}>
+                                    <div class={s.bar_text}>
+                                        <span>{tag.name} - {percent}</span>
+                                        <span>¥{amount}</span>
+                                    </div>
+                                    <div class={s.bar}>
+                                        <div class={s.bar_inner} style={{ width: percent }}></div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         )
     }
